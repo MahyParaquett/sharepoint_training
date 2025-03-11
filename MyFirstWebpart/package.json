@@ -21,6 +21,7 @@
     "@pnp/graph": "^4.10.0",
     "@pnp/sp": "^4.10.0",
     "@types/prop-types": "^15.5.3",
+    "bootstrap": "^5.3.3",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",
     "react-dom": "16.8.5",
