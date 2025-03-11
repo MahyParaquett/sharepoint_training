@@ -58,9 +58,11 @@
 
     // Primary Button
     min-width: 80px;
-    background-color: $ms-color-teal;
-    border-color: $ms-color-teal;
+    background-color: #A85413;
+    border-color: #A85413;
+    border-radius: 5px;
     color: $ms-color-white;
+    align-self: flex-end;
 
     // Basic Button
     outline: transparent;

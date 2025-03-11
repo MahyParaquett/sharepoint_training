@@ -10,41 +10,47 @@ import { getSP } from "../../../spConfig";
 import { SPFI } from "@pnp/sp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { formatDate } from "../../../utils/FormatDate";
+import Form from "./Form";
 
-export default class HelloWorld extends React.Component<IHelloWorldProps,RequestInterface,{}> {
+export default class HelloWorld extends React.Component<
+  IHelloWorldProps,
+  RequestInterface,
+  {}
+> {
   private sp: SPFI;
-  
-  constructor(props){
+
+  constructor(props) {
     super(props);
     this.state = {
-      Items: []
-    }
+      Items: [],
+    };
     this.sp = getSP();
   }
-  
+
   async componentDidMount() {
     try {
-      const items: any[] = await this.sp.web.lists.getByTitle("Lista teste").items();
-      
+      const items: any[] = await this.sp.web.lists
+        .getByTitle("Lista teste")
+        .items();
+
       this.setState({
-        Items : items
-      })
-      
+        Items: items,
+      });
+
       console.log(items);
-      
     } catch (error) {
       console.error("Erro ao buscar itens:", error);
     }
   }
 
-  renderHtml(value){
-    return(
+  renderHtml(value) {
+    return (
       <tr>
         <td>{value.Title}</td>
         <td>{formatDate(value.Item)}</td>
         <td>{value.G_x00ea_nero}</td>
       </tr>
-    )
+    );
   }
   public render(): React.ReactElement<IHelloWorldProps> {
     return (
@@ -74,6 +80,7 @@ export default class HelloWorld extends React.Component<IHelloWorldProps,Request
               <img src={Logo} alt="logo" className={styles.logo}></img>
             </div>
           </div>
+
           <div className={styles.row}>
             <table className="table table-striped">
               <thead>
@@ -81,11 +88,11 @@ export default class HelloWorld extends React.Component<IHelloWorldProps,Request
                 <th>Data de Nascimento</th>
                 <th>Gênero</th>
               </thead>
-              <tbody>
-                {this.state.Items.map(this.renderHtml)}
-              </tbody>
+              <tbody>{this.state.Items.map(this.renderHtml)}</tbody>
             </table>
           </div>
+
+          <Form />
         </div>
       </div>
     );
