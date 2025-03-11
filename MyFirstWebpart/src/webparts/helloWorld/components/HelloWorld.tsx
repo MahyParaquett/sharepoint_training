@@ -3,19 +3,37 @@ import styles from "./HelloWorld.module.scss";
 import { IHelloWorldProps } from "./IHelloWorldProps";
 import { escape } from "@microsoft/sp-lodash-subset";
 import Logo from "../../../assets/logo-t2m-pb1.png";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
+import { getSP } from "../../../spConfig";
+import { SPFI } from "@pnp/sp";
 
 export default class HelloWorld extends React.Component<IHelloWorldProps, {}> {
-  
+  private sp: SPFI;
+
+  constructor(props: IHelloWorldProps) {
+    super(props);
+    this.sp = getSP(); 
+  }
+
+  async componentDidMount() {
+    try {
+      const items: any[] = await this.sp.web.lists.getByTitle("Lista teste").items();
+      console.log(items);
+    } catch (error) {
+      console.error("Erro ao buscar itens:", error);
+    }
+  }
+
   public render(): React.ReactElement<IHelloWorldProps> {
     return (
       <div className={styles.helloWorld}>
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.column}>
-            
               <h1>TESTE</h1>
-             
-              
+
               <span className={styles.title}>Welcome to my first webpart!</span>
               <p className={styles.subTitle}>
                 I'm learning how to customize SharePoint experiences using Web
@@ -33,7 +51,7 @@ export default class HelloWorld extends React.Component<IHelloWorldProps, {}> {
               </a>
             </div>
             <div className={styles.columnLogo}>
-            <img src={Logo} alt="logo" className={styles.logo}></img>
+              <img src={Logo} alt="logo" className={styles.logo}></img>
             </div>
           </div>
         </div>

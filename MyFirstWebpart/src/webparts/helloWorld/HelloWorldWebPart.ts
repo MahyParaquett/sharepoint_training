@@ -6,10 +6,10 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-
 import * as strings from 'HelloWorldWebPartStrings';
 import HelloWorld from './components/HelloWorld';
 import { IHelloWorldProps } from './components/IHelloWorldProps';
+import { getSP } from '../../spConfig';
 
 export interface IHelloWorldWebPartProps {
   description: string;
@@ -17,6 +17,13 @@ export interface IHelloWorldWebPartProps {
 
 export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorldWebPartProps> {
 
+  
+  protected async onInit(): Promise<void> {
+    await super.onInit();
+    getSP(this.context); // Inicializa o SP com o contexto da WebPart
+  }
+
+  
   public render(): void {
     const element: React.ReactElement<IHelloWorldProps> = React.createElement(
       HelloWorld,
