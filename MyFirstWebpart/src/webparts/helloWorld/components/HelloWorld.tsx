@@ -3,43 +3,35 @@ import styles from "./HelloWorld.module.scss";
 import { IHelloWorldProps, RequestInterface } from "./IHelloWorldProps";
 import { escape } from "@microsoft/sp-lodash-subset";
 import Logo from "../../../assets/logo-t2m-pb1.png";
-import "@pnp/sp/webs";
-import "@pnp/sp/lists";
-import "@pnp/sp/items";
-import { getSP } from "../../../spConfig";
-import { SPFI } from "@pnp/sp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { formatDate } from "../../../utils/FormatDate";
 import Form from "./Form";
+import { sp } from "@pnp/sp";
 
 export default class HelloWorld extends React.Component<
   IHelloWorldProps,
   RequestInterface,
   {}
 > {
-  private sp: SPFI;
-
+  
   constructor(props) {
     super(props);
     this.state = {
       Items: [],
     };
-    this.sp = getSP();
   }
-
+ 
   async componentDidMount() {
     try {
-      const items: any[] = await this.sp.web.lists
-        .getByTitle("Lista teste")
-        .items();
-
+      const items = await sp.web.lists.getByTitle("Lista teste").items.get();
+      
       this.setState({
         Items: items,
       });
-
-      console.log(items);
+      
+      console.log("Itens da lista:", items);
     } catch (error) {
-      console.error("Erro ao buscar itens:", error);
+      console.error("Erro ao buscar os itens:", error);
     }
   }
 

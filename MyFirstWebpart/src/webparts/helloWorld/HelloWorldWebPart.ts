@@ -9,7 +9,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'HelloWorldWebPartStrings';
 import HelloWorld from './components/HelloWorld';
 import { IHelloWorldProps } from './components/IHelloWorldProps';
-import { getSP } from '../../spConfig';
+import { setupSP } from '../../spConfig';
 
 export interface IHelloWorldWebPartProps {
   description: string;
@@ -20,7 +20,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
   
   protected async onInit(): Promise<void> {
     await super.onInit();
-    getSP(this.context); // Inicializa o SP com o contexto da WebPart
+    setupSP(this.context); // Inicializa o PnP JS corretamente
   }
 
   

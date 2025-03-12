@@ -1,7 +1,10 @@
 import * as React from "react"; 
 import styles from "../HelloWorld.module.scss";
+import { useForm } from "react-hook-form";
 
 export default function Form(){
+    
+    const {register, watch } = useForm();
     
     return(
         <div className={styles.row}>

@@ -1,11 +1,10 @@
-import { SPFI, spfi } from "@pnp/sp";
-import { SPFx } from "@pnp/sp";
+import { sp } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 
-let sp: SPFI;
-
-export const getSP = (context?: any): SPFI => {
-  if (!sp && context) {
-    sp = spfi().using(SPFx(context));
-  }
-  return sp;
+export const setupSP = (context: any): void => {
+  sp.setup({
+    spfxContext: context,
+  });
 };
