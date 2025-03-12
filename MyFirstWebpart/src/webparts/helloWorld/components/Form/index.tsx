@@ -1,20 +1,41 @@
 import * as React from "react"; 
 import styles from "../HelloWorld.module.scss";
 import { useForm } from "react-hook-form";
+import { Inputs } from "./type";
+import { sp } from "@pnp/sp";
 
-export default function Form(){
+export default function Form(props){
     
-    const {register, watch } = useForm();
+    const {register, handleSubmit } = useForm<Inputs>();
+    
+    const onSubmit = async data => {
+      const birthdate = data.Birthdate
+      const dateFormat = new Date(birthdate);
+      
+      await sp.web.lists.getByTitle(props.listName).items.add({
+        //Só precisoou abrir o objeto porque o nome dos inputs e os da lista estão diferentes
+        Title: data.Name,
+        Item: dateFormat,
+        G_x00ea_nero: data.Gender
+        
+      }).then(res =>{
+        console.log(res)
+      }).catch(err => {
+        console.log("erro", err)
+      }) 
+    }
     
     return(
         <div className={styles.row}>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1" className={styles.subTitle}>
                   Nome
                 </label>
                 <input
                   type="text"
+                  ref={register}
+                  name="Name"
                   className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
@@ -32,6 +53,8 @@ export default function Form(){
                 </label>
                 <input
                   type="text"
+                  ref={register}
+                  name="Birthdate"
                   className="form-control"
                   id="exampleInputPassword1"
                   placeholder="Digite a data de nascimento"
@@ -48,6 +71,8 @@ export default function Form(){
                 </label>
                 <input
                   type="text"
+                  ref={register}
+                  name="Gender"
                   className="form-control"
                   id="exampleInputPassword1"
                   placeholder="Digite o gênero"

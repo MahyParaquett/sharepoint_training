@@ -21,9 +21,11 @@ export default class HelloWorld extends React.Component<
     };
   }
  
+  private readonly listName: string = "Lista teste";
+  
   async componentDidMount() {
     try {
-      const items = await sp.web.lists.getByTitle("Lista teste").items.get();
+      const items = await sp.web.lists.getByTitle(this.listName).items.get();
       
       this.setState({
         Items: items,
@@ -84,7 +86,7 @@ export default class HelloWorld extends React.Component<
             </table>
           </div>
 
-          <Form />
+          <Form listName={this.listName}/>
         </div>
       </div>
     );
