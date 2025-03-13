@@ -1,0 +1,16 @@
+{
+    "sourceDirectory": "src",
+    "sharePointSiteUrl": "https://t2mlabtst.sharepoint.com/sites/Treinamento_0603",
+    "workspaceRoot": "c:\\T2M\\Projetos\\SHAREPOINT\\PnpPratice",
+    "publishWorkspaceOptions": {
+        "destinationFolder": "/",
+        "globPattern": "c:\\T2M\\Projetos\\SHAREPOINT\\PnpPratice\\src\\**\\*.*",
+        "localRoot": "c:\\T2M\\Projetos\\SHAREPOINT\\PnpPratice\\src"
+    },
+    "publishingScope": "Minor",
+    "authenticationType": "Digest",
+    "remoteFolders": [
+        "/SiteAssets/**/*",
+        "/SitePages/*"
+    ]
+}
