@@ -4,7 +4,7 @@
     "environment": "spo",
     "version": "1.11.0",
     "libraryName": "pnp-pratice",
-    "libraryId": "9d27f403-af0c-4729-b44f-8764e406ac72",
+    "libraryId": "beaec485-968d-4350-a4a6-e2ff4297814a",
     "packageManager": "npm",
     "isDomainIsolated": true,
     "componentType": "webpart"

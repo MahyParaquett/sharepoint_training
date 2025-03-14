@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "pnp-pratice-client-side-solution",
-    "id": "9d27f403-af0c-4729-b44f-8764e406ac72",
+    "id": "beaec485-968d-4350-a4a6-e2ff4297814a",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
