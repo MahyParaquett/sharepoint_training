@@ -10,6 +10,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'HomeWebPartStrings';
 import Home from './components/Home';
 import { IHomeProps } from './components/IHomeProps';
+import { setupSP } from '../../spConfig';
 
 export interface IHomeWebPartProps {
   description: string;
@@ -17,6 +18,12 @@ export interface IHomeWebPartProps {
 
 export default class HomeWebPart extends BaseClientSideWebPart<IHomeWebPartProps> {
 
+  // Inicializa o PnP JS corretamente
+  protected async onInit(): Promise<void> {
+    await super.onInit();
+    setupSP(this.context); 
+  }
+  
   public render(): void {
     const element: React.ReactElement<IHomeProps> = React.createElement(
       Home,
@@ -32,10 +39,7 @@ export default class HomeWebPart extends BaseClientSideWebPart<IHomeWebPartProps
     ReactDom.unmountComponentAtNode(this.domElement);
   }
 
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
-  }
-
+ 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [

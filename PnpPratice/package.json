@@ -7,19 +7,25 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "build": "gulp bundle",
+    "build": "gulp clean & gulp bundle --ship --max-old-space-size=4098 & gulp package-solution --ship",
     "clean": "gulp clean",
-    "test": "gulp test"
+    "test": "gulp test",
+    "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve"
   },
   "dependencies": {
-    "react": "16.8.5",
-    "react-dom": "16.8.5",
-    "office-ui-fabric-react": "6.214.0",
     "@microsoft/sp-core-library": "1.11.0",
+    "@microsoft/sp-lodash-subset": "1.11.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.11.0",
     "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-webpart-base": "1.11.0",
-    "@microsoft/sp-lodash-subset": "1.11.0",
-    "@microsoft/sp-office-ui-fabric-core": "1.11.0"
+    "@pnp/graph": "^3.11.0",
+    "@pnp/pnpjs": "^2.11.0",
+    "@types/prop-types": "^15.5.3",
+    "bootstrap": "^5.3.3",
+    "office-ui-fabric-react": "6.214.0",
+    "react": "16.8.5",
+    "react-dom": "16.8.5",
+    "react-hook-form": "^6.0.4"
   },
   "devDependencies": {
     "@types/react": "16.8.8",
@@ -34,6 +40,7 @@
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
     "@types/webpack-env": "1.13.1",
-    "@types/es6-promise": "0.0.33"
+    "@types/es6-promise": "0.0.33",
+    "spfx-fast-serve-helpers": "~1.11.0"
   }
 }
