@@ -1,7 +1,9 @@
 export interface IHomeProps {
-  description: string;
+  Items: any
 }
 
 export interface RequestInterface {
-  Items: any
+  Items: any,
+  OpenModal: boolean,
+  ItemId: number
 }

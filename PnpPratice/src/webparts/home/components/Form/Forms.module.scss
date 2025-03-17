@@ -1,12 +1,5 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
-.home {
-  .container {
-    max-width: 700px;
-    margin: 0px auto;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-  }
-
   .row {
     @include ms-Grid-row;
     @include ms-fontColor-neutralPrimary;
@@ -14,39 +7,13 @@
     padding: 20px;
    
   }
-
-  .column {
-    @include ms-Grid-col;
-    @include ms-lg8;
-    @include ms-xl9;
   
-  }
-  
-  .columnLogo {
-    @include ms-Grid-col;
-    @include ms-lg4;
-    @include ms-xl3;
-    
-  }
-
   .title {
     @include ms-font-xl;
     @include ms-fontColor-neutralPrimary;
-  }
-
-    
-  .logo {
-    width: 135px;
-    height: auto;
-  }
-
+  }  
   
   .subTitle {
-    @include ms-font-l;
-    @include ms-fontColor-neutralPrimary;
-  }
-
-  .description {
     @include ms-font-l;
     @include ms-fontColor-neutralPrimary;
   }
@@ -87,23 +54,10 @@
       display: inline-block;
     }
   }
-  
-  table {
-    table-layout: fixed; // Mantém a tabela dentro do contêiner
-    width: 100%; // Faz a tabela ocupar 100% da largura disponível
-  }
-  
-  td {
-    word-wrap: break-word; // Quebra palavras longas
-    overflow-wrap: break-word; // Outra forma de quebra
-    white-space: normal; // Permite a quebra de linha
-    max-width: 150px; // Defina um tamanho máximo para evitar células gigantes
-  }
-  
-  th {
-    width: 100%;
-  }
-  
-  
+
+.checkbox {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
 }
 

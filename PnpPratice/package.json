@@ -25,7 +25,8 @@
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",
     "react-dom": "16.8.5",
-    "react-hook-form": "^6.0.4"
+    "react-hook-form": "^6.0.4",
+    "react-icons": "^3.11.0"
   },
   "devDependencies": {
     "@types/react": "16.8.8",
