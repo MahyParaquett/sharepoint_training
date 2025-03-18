@@ -3,13 +3,14 @@ import { IHomeProps, RequestInterface } from "./IHomeProps";
 import Logo from "../../../assets/logo-t2m-pb1.png";
 import Form from "./Form";
 import { sp } from "@pnp/sp";
-import { MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 import ModalEdit from "./Modal-Edit";
 
 
 import styles from "./Home.module.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import ModalDelete from "./Modal-Delete";
 
 
 export default class Home extends React.Component<
@@ -22,7 +23,8 @@ export default class Home extends React.Component<
     this.state = {
       Items: [],
       OpenModal: false,
-      ItemId: 0
+      ItemId: 0,
+      OpenModalDelete: false,
     };
   }
 
@@ -77,6 +79,17 @@ export default class Home extends React.Component<
             style={{ cursor: "pointer", color: "#A85413" }}
           />
         </td>
+        <td>
+          <MdDelete 
+            size={18}
+            onClick={() => {
+             
+              this.setState({ OpenModalDelete: true });
+              this.setState({ItemId: value.Id})
+            }}
+            style={{ cursor: "pointer", color: "#A85413" }}
+          />
+        </td>
       </tr>
     );
   };
@@ -105,6 +118,7 @@ export default class Home extends React.Component<
                 <th>Update</th>
                 <th>Delete</th>
                 <th>Editar</th>
+                <th>Apagar</th>
               </thead>
               <tbody>{this.state.Items.map(this.renderHtml)}</tbody>
             </table>
@@ -112,6 +126,15 @@ export default class Home extends React.Component<
             {this.state.OpenModal && (
             <ModalEdit
               closeModal={() => this.setState({ OpenModal: false })}
+              ItemId={this.state.ItemId}
+              listName={this.listName}
+              onItemEdited={this.handleItemAdded}
+            />
+            )} 
+            
+            {this.state.OpenModalDelete && (
+            <ModalDelete
+              closeModal={() => this.setState({ OpenModalDelete: false })}
               ItemId={this.state.ItemId}
               listName={this.listName}
               onItemEdited={this.handleItemAdded}
