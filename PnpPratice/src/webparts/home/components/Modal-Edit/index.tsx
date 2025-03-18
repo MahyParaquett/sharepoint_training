@@ -5,7 +5,7 @@ import { Register } from "./types";
 import { MdClose } from "react-icons/md";
 import { sp } from "@pnp/sp";
 
-const ModalComponent = ({ closeModal, ItemId, listName, onItemEdited }) => {
+const ModalEdit = ({ closeModal, ItemId, listName, onItemEdited }) => {
   const { register, reset, handleSubmit } = useForm<Register>();
 
   const onSubmit = async (newData: Register) => {
@@ -150,4 +150,4 @@ const ModalComponent = ({ closeModal, ItemId, listName, onItemEdited }) => {
   );
 };
 
-export default ModalComponent;
+export default ModalEdit;

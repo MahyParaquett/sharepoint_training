@@ -4,7 +4,8 @@ import Logo from "../../../assets/logo-t2m-pb1.png";
 import Form from "./Form";
 import { sp } from "@pnp/sp";
 import { MdEdit } from "react-icons/md";
-import ModalComponent from "./Modal";
+import ModalEdit from "./Modal-Edit";
+
 
 import styles from "./Home.module.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -109,7 +110,7 @@ export default class Home extends React.Component<
             </table>
         
             {this.state.OpenModal && (
-            <ModalComponent
+            <ModalEdit
               closeModal={() => this.setState({ OpenModal: false })}
               ItemId={this.state.ItemId}
               listName={this.listName}
